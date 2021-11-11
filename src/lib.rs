@@ -1,8 +1,9 @@
+pub use backtrace::Backtrace;
 pub use chrono::Local;
 pub use gettid::gettid;
 
 pub fn get_type_name<T: ?Sized>(_: &T) -> &'static str {
-    return std::any::type_name::<T>();
+    std::any::type_name::<T>()
 }
 
 #[macro_export]
