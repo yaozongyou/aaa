@@ -12,7 +12,7 @@ macro_rules! aaa {
         use std::fs::OpenOptions;
         use std::io::Write;
 
-        let mut s = String::from(format!("[{} {} {}:{}] ", $crate::Local::now().format("%Y-%m-%d %H:%M:%S%.3f"), $crate::gettid(),  file!(), line!()));
+        let mut s = String::from(format!("[{} {}:{} {}:{}] ", $crate::Local::now().format("%Y-%m-%d %H:%M:%S%.3f"), std::process::id(), $crate::gettid(),  file!(), line!()));
         s += &String::from(format!($($arg)*));
 
         if let Ok(mut f) = OpenOptions::new().write(true).append(true).create(true).open("/tmp/debug.txt") {
